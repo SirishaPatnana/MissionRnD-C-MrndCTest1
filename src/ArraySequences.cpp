@@ -34,7 +34,7 @@ Difficulty : Medium
 
 int * find_sequences(int *arr, int len){
 	int i, j, diff[100], c, finalarr[7], d = 0;
-	if (arr == NULL || len < 3)
+	if (arr == NULL || len == 0)
 		return NULL;
 	for (i = 0; i < len; i++)
 	{
@@ -77,5 +77,6 @@ int * find_sequences(int *arr, int len){
 			finalarr[d++] = j;
 		}
 	}
+	//Return final array which has 6indexes [AP1_S,AP1_E,AP2_S,AP2_E,GP1_S,GP2_E]
 	return finalarr;
 }
