@@ -30,5 +30,61 @@ struct node{
 
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	int day1 = 0,day2=0,mon1=0,mon2=0,year1=0,year2=0,i=0;
+	if (date1head == NULL || date2head == NULL)
+		return -1;
+	while (date1head != NULL)
+	{
+		if (i < 2)
+		{
+			day1 = (day1 * 10) + date1head->data;
+			date1head = date1head->next;
+		}
+		else if (i < 4)
+		{
+			mon1 = (mon1 * 10) + date1head->data;
+			date1head = date1head->next;
+		}
+		else{
+			year1 = (year1 * 10) + date1head->data;
+			date1head = date1head->next;
+		}
+		i++;
+	}
+	i = 0;
+	while (date2head != NULL)
+	{
+		if (i < 2)
+		{
+			day2 = (day2 * 10) + date2head->data;
+			date2head = date2head->next;
+		}
+		else if (i < 4)
+		{
+			mon2 = (mon2 * 10) + date2head->data;
+			date2head = date2head->next;
+		}
+		else{
+			year2 = (year2 * 10) + date2head->data;
+			date2head = date2head->next;
+		}
+		i++;
+	}
+	if (year1 == year2&&mon1 == mon2&&day1 == day2)
+		return 0;
+	if (year1==year2)
+	if (mon1==mon2)
+	if (day1 - day2 == 1)
+		return 0;
+	if (year1 == year2)
+	if (mon1 == mon2)
+	if (day1 != day2)
+		return abs(day1 - day2) - 1;
+	if (year1==year2)
+	if (mon1 != mon2)
+		return (31 * (abs(mon1 - mon2))) - abs(day1 - day2) - 1;
+	if (year1!=year2)
+		return (365*(abs(year1-year2)))-(31 * (abs(mon1 - mon2))) - abs(day1 - day2) - 1;
+
+
 }

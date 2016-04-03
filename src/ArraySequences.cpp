@@ -27,11 +27,55 @@ Two A.P cannot start at same index .
 Difficulty : Medium
 */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
 #include <math.h>
 
 int * find_sequences(int *arr, int len){
-	//Return final array which has 6indexes [AP1_S,AP1_E,AP2_S,AP2_E,GP1_S,GP2_E]
-	return NULL;
+	int i, j, diff[100], c, finalarr[7], d = 0;
+	if (arr == NULL || len < 3)
+		return NULL;
+	for (i = 0; i < len; i++)
+	{
+		c = 1;
+		for (j = i; j < len; j++)
+		{
+			diff[j] = arr[j] - arr[j + 1];
+			if (j>i)
+			{
+				if (diff[j - 1] == diff[j])
+					c++;
+				else
+					break;
+			}
+		}
+		if (c >= 2)
+		{
+			finalarr[d++] = i;
+			finalarr[d++] = j;
+			i = j;
+		}
+	}
+	for (i = 0; i < len; i++)
+	{
+		c = 1;
+		for (j = i; j < len; j++)
+		{
+			diff[j] = arr[j + 1] / arr[j];
+			if (j>i && diff[j] != 1)
+			{
+				if (diff[j - 1] == diff[j])
+					c++;
+				else
+					break;
+			}
+		}
+		if (c >= 2)
+		{
+			finalarr[d++] = i;
+			finalarr[d++] = j;
+		}
+	}
+	return finalarr;
 }
