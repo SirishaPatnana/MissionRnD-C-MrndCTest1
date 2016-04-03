@@ -33,7 +33,9 @@ Difficulty : Medium
 #include <math.h>
 
 int * find_sequences(int *arr, int len){
-	int i, j, diff[100], c, finalarr[7], d = 0;
+	int i, j, diff[100], c, d = 0;
+	int *finalarr;
+	finalarr = (int*)calloc(6, sizeof(int));
 	if (arr == NULL || len == 0)
 		return NULL;
 	for (i = 0; i < len; i++)
